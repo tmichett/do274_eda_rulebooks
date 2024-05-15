@@ -22,7 +22,7 @@
     - name: Place Website in Operational Status
       condition: >
         event.payload.channel_name == "town-square"
-        and event.payload.trigger_word == "website-normal"
+        and event.payload.trigger_word == "website-service-fix"
         and event.payload.user_name == "student"
       action:
         run_job_template:
