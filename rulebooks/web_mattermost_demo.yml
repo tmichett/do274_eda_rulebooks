@@ -1,0 +1,37 @@
+---
+- name: Capture POST events from Mattermost
+  hosts: all
+  sources:
+    - name: Match events posted to port 5000
+      ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+
+  rules:
+
+    - name: Fix Index.html File
+      condition: >
+        event.payload.channel_name == "town-square"
+        and event.payload.trigger_word == "website-index-fix"
+        and event.payload.user_name == "student"
+      action:
+        run_job_template:
+          name: DO274 - Fix Index
+          organization: Red Hat Training
+
+    - name: Place Website in Operational Status
+      condition: >
+        event.payload.channel_name == "town-square"
+        and event.payload.trigger_word == "website-normal"
+        and event.payload.user_name == "student"
+      action:
+        run_job_template:
+          name: DO274 - Fix Service
+          organization: Red Hat Training
+
+
+    - name: Print event data
+      condition: event.payload is defined
+      action:
+        print_event:
+          pretty: true
