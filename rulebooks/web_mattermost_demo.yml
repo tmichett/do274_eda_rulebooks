@@ -16,7 +16,7 @@
         and event.payload.user_name == "student"
       action:
         run_job_template:
-          name: DO274 - Fix Index
+          name: DEMO - EDA Restoring Index.html
           organization: Red Hat Training
 
     - name: Place Website in Operational Status
