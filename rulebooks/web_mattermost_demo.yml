@@ -25,8 +25,8 @@
         and event.payload.trigger_word == "website-service-fix"
         and event.payload.user_name == "student"
       action:
-        run_job_template:
-          name: DO274 - Fix Service
+        run_workflow_template:
+          name: DEMO - EDA Restoring HTTPD Service
           organization: Red Hat Training
 
 
