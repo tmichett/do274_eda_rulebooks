@@ -15,7 +15,7 @@
         and event.payload.trigger_word == "website-index-fix"
         and event.payload.user_name == "student"
       action:
-        run_job_template:
+        run_workflow_template:
           name: DEMO - EDA Restoring Index.html
           organization: Red Hat Training
 
